@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: process.cwd(),
+  experimental: {
+    turbopack: {
+      // ✅ Correct key
+      root: process.cwd(),
+    },
   },
 };
 
