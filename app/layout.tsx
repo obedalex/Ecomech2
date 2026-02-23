@@ -3,6 +3,8 @@ import Footer  from "@/components/sections/footer";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import MotionProvider from "@/lib/motionProvider";
 import "./globals.css";
 
 
@@ -43,9 +45,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Footer />
+          <MotionProvider>
+            <Header />
+            {children}
+            <SpeedInsights />
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
