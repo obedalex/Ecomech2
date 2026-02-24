@@ -44,6 +44,16 @@ function Process() {
     "Wet scrubbers for acid gas neutralization",
   ];
 
+  const pollutionItemVariants = {
+    hidden: { opacity: 0, x: -18, y: 12 },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.55, ease: [0.33, 1, 0.68, 1] },
+    },
+  };
+
   const processSteps = [
     {
       step: "01",
@@ -138,7 +148,7 @@ function Process() {
                     }}
                   >
                     <HoverTap hoverScale={1.03} tapScale={0.99}>
-                      <div className="relative z-10 w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 flex items-center justify-center shadow-lg">
+                      <div className="relative z-10 w-24 h-24 mx-auto mb-6 rounded-full bg-linear-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 flex items-center justify-center shadow-lg">
                         <span className="text-2xl font-bold text-white">
                           {item.step}
                         </span>
@@ -256,10 +266,11 @@ function Process() {
 
               {/* Slower stagger list items */}
               <Stagger
-                className="space-y-4"
+                className="grid sm:grid-cols-2 gap-4"
                 stagger={0.11}
                 delayChildren={0.35}
                 amount={0.25}
+                itemVariants={pollutionItemVariants}
               >
                 {pollutionControlSystems.map((system, index) => (
                   <div key={system} className="flex items-start gap-3">

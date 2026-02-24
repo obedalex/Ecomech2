@@ -3,20 +3,20 @@ import type { Variants, Transition } from "framer-motion";
 
 /**
  * GLOBAL DELAY MULTIPLIER
- * 1.5 = 150% of previous delay
+ * Keeps individual delays small while allowing coarse tuning.
  */
-export const DELAY_MULTIPLIER = 2.5;
+export const DELAY_MULTIPLIER = 1.8;
 
 /**
  * Softer premium easing
  */
-export const easeOut: Transition["ease"] = [0.22, 1, 0.36, 1];
+export const easeOut: Transition["ease"] = [0.33, 1, 0.68, 1];
 
 /**
  * Base transition (slower overall)
  */
 export const baseTransition: Transition = {
-  duration: 0.8,
+  duration: 0.5,
   ease: easeOut,
 };
 

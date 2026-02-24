@@ -9,37 +9,37 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { motion } from "framer-motion"; // Import Framer Motion
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#technology", label: "Technology" },
-    { href: "#process", label: "Process" },
-    { href: "#projects", label: "Projects" },
-  ];
+const navLinks = [
+{ href: "#about", label: "About" },
+{ href: "#technology", label: "Technology" },
+{ href: "#process", label: "Process" },
+{ href: "#projects", label: "Projects" },
+];
 
-  return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo + Brand */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <Image
+return (
+<header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm backdrop-blur-md">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div className="flex items-center justify-between h-16 lg:h-20">
+{/_ Logo + Brand _/}
+<Link href="/" className="flex items-center gap-3 shrink-0">
+<Image
               src="/logo2.png"
               alt="Ecomech Engineering Logo"
               width={80}
               height={80}
               className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 object-contain"
             />
-            <div className="flex flex-col leading-tight">
-              <span className="font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-foreground">
-                ECOMECH
-              </span>
-              <span className="text-xs uppercase tracking-wide text-muted-foreground">
-                Engineering Ltd
-              </span>
-            </div>
-          </Link>
+<div className="flex flex-col leading-tight">
+<span className="font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-foreground">
+ECOMECH
+</span>
+<span className="text-xs uppercase tracking-wide text-muted-foreground">
+Engineering Ltd
+</span>
+</div>
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -73,7 +73,7 @@ const Header = () => {
                 className="bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 text-lg"
                 asChild
               >
-                <a href="mailto:info@ecomech.com">Email us</a>
+                <a href="mailto:info@ecomechghana.com">Email us</a>
               </Button>
             </motion.div>
           </div>
@@ -112,7 +112,8 @@ const Header = () => {
         </div>
       )}
     </header>
-  );
+
+);
 };
 
 export default Header;

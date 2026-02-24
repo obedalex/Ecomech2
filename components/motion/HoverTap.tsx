@@ -17,12 +17,16 @@ export default function HoverTap({
   hoverScale = 1.03,
   tapScale = 0.98,
 }: HoverTapProps) {
+  const mergedClassName = ["transform-gpu will-change-transform", className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <motion.div
-      className={className}
+      className={mergedClassName}
       whileHover={{ scale: hoverScale }}
       whileTap={{ scale: tapScale }}
-      transition={{ type: "spring", stiffness: 380, damping: 26 }}
+      transition={{ type: "spring", stiffness: 260, damping: 24 }}
     >
       {children}
     </motion.div>

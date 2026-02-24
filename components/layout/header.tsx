@@ -57,7 +57,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle /> {/* Add theme toggle */}
             <Button
-              size="sm"
+              size="lg"
               className="bg-green-600 hover:bg-green-700 text-white font-medium"
               asChild
             >

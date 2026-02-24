@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
- function ctaSection() {
+function ctaSection() {
   return (
     <section
       id="contact"
@@ -39,10 +39,10 @@ import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
                 <div>
                   <p className="text-sm text-white/70 mb-1">Email Us</p>
                   <a
-                    href="mailto:info@ecomech.com"
+                    href="mailto:info@ecomechghana.com"
                     className="text-white hover:text-green-200 transition-colors font-semibold"
                   >
-                    info@ecomech.com
+                    info@ecomechghana.com
                   </a>
                 </div>
               </div>

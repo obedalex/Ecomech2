@@ -1,15 +1,15 @@
 import Header from "@/components/layout/header";
-import Footer  from "@/components/sections/footer";
+import Footer from "@/components/sections/footer";
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Exo_2 } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import MotionProvider from "@/lib/motionProvider";
 import "./globals.css";
 
-
-const plusJakarta = Plus_Jakarta_Sans({
+const exo2 = Exo_2({
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-sans",
 });
 
@@ -18,16 +18,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Ecomech Engineering",
   description: "An engineering site to recycle waste",
 };
-
 
 export default function RootLayout({
   children,
@@ -35,9 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${exo2.variable}`} suppressHydrationWarning>
       <body
-        className={`${plusJakarta.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${exo2.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -56,4 +50,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -6,6 +6,7 @@ import { Flame, Recycle, Wind, Magnet } from "lucide-react";
 import FadeIn from "@/components/motion/FadeIn";
 import { Stagger } from "@/components/motion/Stagger";
 import HoverTap from "@/components/motion/HoverTap";
+import { slideIn } from "@/lib/presets";
 
 function Technology() {
   const technologies = [
@@ -86,13 +87,14 @@ function Technology() {
         {/* Grid (staggered reveal + micro hover) */}
         <Stagger
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          stagger={0.12}
-          delayChildren={0.25}
-          amount={0.2}
+          stagger={0.08}
+          delayChildren={0.12}
+          amount={0.6}
+          itemVariants={slideIn("left", 24)}
         >
           {technologies.map((tech) => (
             <HoverTap key={tech.title} hoverScale={1.015} tapScale={0.99}>
-              <div className="group relative p-8 rounded-3xl bg-card border-2 border-green-200 hover:border-green-500 hover:shadow-lg transition-all duration-300">
+              <div className="group relative p-8 rounded-3xl bg-card border-2 border-green-200 hover:border-green-500 hover:shadow-lg transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(.33,1,.68,1)] transform-gpu will-change-transform">
                 {/* Icon */}
                 <div className="w-16 h-16 rounded-2xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6 group-hover:bg-green-200 dark:group-hover:bg-green-800/50 transition-colors">
                   <tech.icon className="w-8 h-8 text-green-600 dark:text-green-400" />
