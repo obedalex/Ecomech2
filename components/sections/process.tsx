@@ -2,7 +2,7 @@
 
 import { Zap, Flame, Wind, Fuel } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import FadeIn from "@/components/motion/FadeIn";
 import Reveal from "@/components/motion/Reveal";
@@ -10,6 +10,9 @@ import { Stagger } from "@/components/motion/Stagger";
 import HoverTap from "@/components/motion/HoverTap";
 
 function Process() {
+  const easeSoft: [number, number, number, number] = [0.16, 1, 0.3, 1];
+  const easeOut: [number, number, number, number] = [0.33, 1, 0.68, 1];
+
   const wasteDryingBenefits = [
     {
       icon: Zap,
@@ -44,13 +47,13 @@ function Process() {
     "Wet scrubbers for acid gas neutralization",
   ];
 
-  const pollutionItemVariants = {
+  const pollutionItemVariants: Variants = {
     hidden: { opacity: 0, x: -18, y: 12 },
     show: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration: 0.55, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.55, ease: easeOut },
     },
   };
 
@@ -121,7 +124,7 @@ function Process() {
               viewport={{ once: true, amount: 0.35 }}
               transition={{
                 duration: 1.05,
-                ease: [0.16, 1, 0.3, 1],
+                ease: easeSoft,
                 delay: 0.25,
               }}
             />
@@ -163,7 +166,7 @@ function Process() {
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{
                       duration: 0.65,
-                      ease: [0.16, 1, 0.3, 1],
+                      ease: easeSoft,
                       delay: 0.55 + idx * 0.12,
                     }}
                   >
@@ -177,7 +180,7 @@ function Process() {
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{
                       duration: 0.65,
-                      ease: [0.16, 1, 0.3, 1],
+                      ease: easeSoft,
                       delay: 0.62 + idx * 0.12,
                     }}
                   >

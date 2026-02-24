@@ -2,11 +2,9 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
 
-type AnimatedButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: React.ReactNode;
-};
+type AnimatedButtonProps = HTMLMotionProps<"button">;
 
 export default function AnimatedButton({
   children,

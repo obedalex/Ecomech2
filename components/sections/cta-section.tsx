@@ -2,15 +2,23 @@
 
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger } from "@/components/motion/Stagger";
 import HoverTap from "@/components/motion/HoverTap";
 
 function ctaSection() {
   const prefersReducedMotion = useReducedMotion();
+  const easeOut: [number, number, number, number] = [0.33, 1, 0.68, 1];
 
-  const heroVariants = {
+  const bgMotionProps = prefersReducedMotion
+    ? {}
+    : {
+        animate: { backgroundPosition: ["0% 0%", "12% 8%", "0% 0%"] },
+        transition: { duration: 18, repeat: Infinity, ease: "linear" as const },
+      };
+
+  const heroVariants: Variants = {
     hidden: {
       opacity: 0,
       y: prefersReducedMotion ? 0 : 24,
@@ -20,33 +28,40 @@ function ctaSection() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.65, ease: easeOut },
     },
   };
 
-  const textItemVariants = {
+  const textItemVariants: Variants = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.55, ease: easeOut },
     },
   };
 
-  const contactItemVariants = {
+  const contactItemVariants: Variants = {
     hidden: { opacity: 0, x: prefersReducedMotion ? 0 : -12, y: prefersReducedMotion ? 0 : 8 },
     show: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration: 0.55, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.55, ease: easeOut },
     },
   };
 
-  const iconBob = prefersReducedMotion ? undefined : { y: [0, -2, 0] };
-  const iconBobTransition = prefersReducedMotion
-    ? undefined
-    : { duration: 2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" };
+  const iconBobProps = prefersReducedMotion
+    ? {}
+    : {
+        animate: { y: [0, -2, 0] },
+        transition: {
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "mirror" as const,
+          ease: "easeInOut" as const,
+        },
+      };
 
   return (
     <section
@@ -61,16 +76,7 @@ function ctaSection() {
             "radial-gradient(60% 60% at 20% 20%, rgba(255,255,255,0.12), transparent 60%), radial-gradient(50% 50% at 80% 30%, rgba(255,255,255,0.1), transparent 55%), radial-gradient(45% 45% at 60% 80%, rgba(74,222,128,0.18), transparent 65%)",
           backgroundSize: "120% 120%",
         }}
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : { backgroundPosition: ["0% 0%", "12% 8%", "0% 0%"] }
-        }
-        transition={
-          prefersReducedMotion
-            ? undefined
-            : { duration: 18, repeat: Infinity, ease: "linear" }
-        }
+        {...bgMotionProps}
       />
       <div
         className="pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay"
@@ -127,8 +133,7 @@ function ctaSection() {
                 <motion.div className="flex items-start gap-4">
                   <motion.div
                     className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0"
-                    animate={iconBob}
-                    transition={iconBobTransition}
+                    {...iconBobProps}
                   >
                     <Mail className="w-6 h-6 text-white" />
                   </motion.div>
@@ -146,8 +151,7 @@ function ctaSection() {
                 <motion.div className="flex items-start gap-4">
                   <motion.div
                     className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0"
-                    animate={iconBob}
-                    transition={iconBobTransition}
+                    {...iconBobProps}
                   >
                     <MapPin className="w-6 h-6 text-white" />
                   </motion.div>
