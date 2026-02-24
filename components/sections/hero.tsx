@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger } from "@/components/motion/Stagger";
 import HoverTap from "@/components/motion/HoverTap";
 
 function Hero() {
   const prefersReducedMotion = useReducedMotion();
+  const easeOut: [number, number, number, number] = [0.33, 1, 0.68, 1];
 
-  const heroVariants = {
+  const heroVariants: Variants = {
     hidden: {
       opacity: 0,
       y: prefersReducedMotion ? 0 : 24,
@@ -20,34 +21,39 @@ function Hero() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.7, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.7, ease: easeOut },
     },
   };
 
-  const textItemVariants = {
+  const textItemVariants: Variants = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, ease: [0.33, 1, 0.68, 1] },
+      transition: { duration: 0.55, ease: easeOut },
     },
   };
-
-  const kenBurnsAnim = prefersReducedMotion
-    ? undefined
-    : { scale: [1.02, 1.06], x: [0, -4], y: [0, -2] };
-
-  const kenBurnsTransition = prefersReducedMotion
-    ? undefined
-    : { duration: 16, repeat: Infinity, repeatType: "mirror", ease: "linear" };
 
   return (
     <section className="relative w-full h-[70vh] min-h-125 flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
       <motion.div
         className="absolute inset-0"
-        animate={kenBurnsAnim}
-        transition={kenBurnsTransition}
+        animate={
+          prefersReducedMotion
+            ? false
+            : { scale: [1.02, 1.06], x: [0, -4], y: [0, -2] }
+        }
+        transition={
+          prefersReducedMotion
+            ? undefined
+            : {
+                duration: 16,
+                repeat: Infinity,
+                repeatType: "mirror" as const,
+                ease: "linear",
+              }
+        }
       >
         <Image
           src="/engineers2.jpg"
@@ -71,7 +77,8 @@ function Hero() {
           itemVariants={textItemVariants}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
-            Innovating Waste-to-Electricity Systems with Integrated Metal Recovery
+            Innovating Waste-to-Electricity Systems with Integrated Metal
+            Recovery
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto">

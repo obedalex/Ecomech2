@@ -53,6 +53,7 @@ function Projects() {
                 alt="WtE Process Flowchart"
                 fill
                 className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </div>
             {/* <div className="rounded-3xl overflow-hidden border-2 border-green-300 shadow-lg relative w-full h-64 md:h-80 lg:h-96">
