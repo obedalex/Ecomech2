@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import { Stagger } from "@/components/motion/Stagger";
@@ -139,25 +139,6 @@ function ctaSection() {
                       className="text-white hover:text-green-200 transition-colors font-semibold"
                     >
                       info@ecomechghana.com
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div className="flex items-start gap-4">
-                  <motion.div
-                    className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0"
-                    animate={iconBob}
-                    transition={iconBobTransition}
-                  >
-                    <Phone className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <div>
-                    <p className="text-sm text-white/70 mb-1">Call Us</p>
-                    <a
-                      href="tel:+233000000000"
-                      className="text-white hover:text-green-200 transition-colors font-semibold"
-                    >
-                      +233 (0) 000 000 000
                     </a>
                   </div>
                 </motion.div>
