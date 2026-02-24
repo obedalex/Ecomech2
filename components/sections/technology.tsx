@@ -89,7 +89,7 @@ function Technology() {
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           stagger={0.08}
           delayChildren={0.12}
-          amount={0.6}
+          amount={0.25}
           itemVariants={slideIn("left", 24)}
         >
           {technologies.map((tech) => (

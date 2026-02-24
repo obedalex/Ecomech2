@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/ThemeToggle"; // Import ThemeToggle
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -66,41 +67,72 @@ const Header = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button
+          <motion.button
             className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            whileTap={{ scale: 0.94 }}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 360, damping: 26 }}
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+            <AnimatePresence mode="wait" initial={false}>
+              {isMobileMenuOpen ? (
+                <motion.span
+                  key="close"
+                  initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 45, scale: 0.8 }}
+                  transition={{ duration: 0.18, ease: [0.33, 1, 0.68, 1] }}
+                  className="inline-flex"
+                >
+                  <X className="w-6 h-6" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 45, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: -45, scale: 0.8 }}
+                  transition={{ duration: 0.18, ease: [0.33, 1, 0.68, 1] }}
+                  className="inline-flex"
+                >
+                  <Menu className="w-6 h-6" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-border bg-card/95 backdrop-blur-md">
-          <nav className="flex flex-col gap-2 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-green-600 hover:bg-muted rounded-lg transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-            {/* Mobile Theme Toggle */}
-            <div className="px-4 pt-2">
-              <ThemeToggle />
-            </div>
-          </nav>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="lg:hidden border-t border-border bg-card/95 backdrop-blur-md origin-top"
+            initial={{ height: 0, opacity: 0, y: -8 }}
+            animate={{ height: "auto", opacity: 1, y: 0 }}
+            exit={{ height: 0, opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <nav className="flex flex-col gap-2 py-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-green-600 hover:bg-muted rounded-lg transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              {/* Mobile Theme Toggle */}
+              <div className="px-4 pt-2 pb-1">
+                <ThemeToggle />
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
