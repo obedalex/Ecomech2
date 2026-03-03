@@ -58,28 +58,28 @@ function Process() {
   };
 
   const processSteps = [
+    // {
+    //   step: "01",
+    //   title: "Collection",
+    //   description: "Municipal waste gathered from communities",
+    // },
     {
       step: "01",
-      title: "Collection",
-      description: "Municipal waste gathered from communities",
-    },
-    {
-      step: "02",
       title: "Pre-treatment",
       description: "Sorting, drying, and material separation",
     },
     {
-      step: "03",
+      step: "02",
       title: "Conversion",
       description: "Thermal processing in controlled environment",
     },
     {
-      step: "04",
+      step: "03",
       title: "Generation",
       description: "Steam turbine power production",
     },
     {
-      step: "05",
+      step: "04",
       title: "Recovery",
       description: "Metal extraction and residue processing",
     },
@@ -131,7 +131,7 @@ function Process() {
 
             {/* Slower stagger for steps */}
             <Stagger
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
               stagger={0.14}
               delayChildren={0.35}
               amount={0.2}
