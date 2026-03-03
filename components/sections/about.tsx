@@ -64,8 +64,8 @@ function About() {
               <Reveal delay={0.24}>
                 <p>
                   Ecomech Engineering Ltd is an industrial process engineering
-                  company focused on turnkey Waste-to-Energy (WtE) plants. We
-                   build, and operate facilities that convert municipal
+                  company focused on turnkey Waste-to-Energy (WtE) plants. We design 
+                   and operate facilities that convert municipal
                   solid waste into electricity, recover ferrous and non-ferrous
                   metals from residues, and integrate emissions control systems
                   to meet international standards.
