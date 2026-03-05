@@ -49,7 +49,7 @@ function Projects() {
           <div className="space-y-6">
             <div className="rounded-3xl overflow-hidden border-2 border-green-300 shadow-lg relative w-full h-64 md:h-80 lg:h-96">
               <Image
-                src="/waste-management.jpg"
+                src="/hero2.jpg"
                 alt="WtE Process Flowchart"
                 fill
                 className="object-cover"
