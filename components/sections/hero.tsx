@@ -56,7 +56,7 @@ function Hero() {
         }
       >
         <Image
-          src="/hero2.jpg"
+          src="/engineers2.jpg"
           fill
           priority
           alt="Industrial waste-to-energy facility"
